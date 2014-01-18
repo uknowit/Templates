@@ -12,7 +12,16 @@
 #include "Stack.hpp"
 #include "Container.hpp"
 #include "typeName.hpp"
-using namespace std;
+#include "DelayedInstatiation.hpp"
+#include "NameLookUp.hpp"
+#include "FriendlyClass.hpp"
+#include "FriendlyTemplateClass.hpp"
+#include "FriendOverloading.hpp"
+
+using  std::strcmp;
+using  std::cout;
+using  std::endl;
+using  std::string;
 string strTolower(string);
 
 template<typename T> void  displayMessage(T message)
@@ -50,5 +59,20 @@ int main()
 	const char* s2="Say \"Hi!\" ",*s1="knights who" ;
 	cout<<min(s1,s2)<<endl;
 	cout<<min<>(s1,s2)<<endl;
-
+	Z<XX> zxx;
+	zxx.a();
+	Z<YY> zyy;
+	zyy.b();
+	XXX<int> xxx;
+	cout<<xxx.f()<<endl;
+	hf();
+	Friendly(2).g();
+	hft();
+	FriendlyTemplateClass<int>(2).g();
+	FriendOverloading<int> a11(82),a22(33);
+	cout<<a11+a22<<endl;
+	FriendOverloading<std::string> ss1("Shashi"),ss2("Kumar");
+	cout<<ss1+ss2<<endl;
+    //cout<<ss1+"HN"<<endl;
+	(a11<a22)?cout<<"a11 is lesser"<<endl:cout<<"a22 is lesser"<<endl;
 }
