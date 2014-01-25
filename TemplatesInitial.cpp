@@ -17,6 +17,8 @@
 #include "FriendlyClass.hpp"
 #include "FriendlyTemplateClass.hpp"
 #include "FriendOverloading.hpp"
+#include "TemplateTraits.hpp"
+#include "Traits.hpp"
 
 using  std::strcmp;
 using  std::cout;
@@ -75,4 +77,21 @@ int main()
 	cout<<ss1+ss2<<endl;
     //cout<<ss1+"HN"<<endl;
 	(a11<a22)?cout<<"a11 is lesser"<<endl:cout<<"a22 is lesser"<<endl;
+
+	ProductManager productManager;
+	Company<ProductManager> c1(productManager);
+	c1.print_everything();
+
+	ProjectManager projectManager;
+	Company<ProjectManager> c2(projectManager);
+	c2.print_everything();
+
+	MixedJobRoles jobRoles;
+	Company<ProductManager,MixedJobRoles> c3(productManager);
+	c3.print_everything();
+	//C<string> ccc;
+	Derived<DerivedFromBase,Base> testMe;
+	assert(testMe.Is);
+	Derived<DerivedFromBase,Rest> testYou;
+	//assert(testYou.Is);
 }
