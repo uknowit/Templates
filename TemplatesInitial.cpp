@@ -19,6 +19,9 @@
 #include "FriendOverloading.hpp"
 #include "TemplateTraits.hpp"
 #include "Traits.hpp"
+#include "ClassCount.hpp"
+#include "TemplateClassCount.hpp"
+#include  "Accumlate.hpp"
 
 using  std::strcmp;
 using  std::cout;
@@ -92,6 +95,22 @@ int main()
 	//C<string> ccc;
 	Derived<DerivedFromBase,Base> testMe;
 	assert(testMe.Is);
-	Derived<DerivedFromBase,Rest> testYou;
+	//Derived<DerivedFromBase,Rest> testYou;
 	//assert(testYou.Is);
+	CountedClass ca;
+	cout<<ca.getCount()<<endl;
+	CountedClass cb;
+	cout<<cb.getCount()<<endl;
+	CountedClass2 ca1;
+	cout<<ca1.getCount()<<endl;
+	TempCountedClass tca;
+	cout<<tca.getCount()<<endl;
+	TempCountedClass tcb;
+	cout<<tcb.getCount()<<endl;
+	TempCountedClass2 tcc;
+	cout<<tcc.getCount()<<endl;
+
+	cout<<Accumlate<4,Identity>::val<<endl;
+	cout<<Accumlate<4,Square>::val<<endl;
+	cout<<Accumlate<4,Cube>::val<<endl;
 }
