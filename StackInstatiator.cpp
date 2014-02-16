@@ -6,6 +6,7 @@
  */
 
 #include "Stack.cpp"
+
 /*
  * Refer http://www.codeproject.com/Articles/3515/How-To-Organize-Template-Source-Code
  */

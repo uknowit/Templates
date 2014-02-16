@@ -22,6 +22,9 @@
 #include "ClassCount.hpp"
 #include "TemplateClassCount.hpp"
 #include  "Accumlate.hpp"
+#include "ExpressionTemplate.hpp"
+#include "ExerciseTemplate.hpp"
+#include "PartialSpecialization.hpp"
 
 using  std::strcmp;
 using  std::cout;
@@ -113,4 +116,33 @@ int main()
 	cout<<Accumlate<4,Identity>::val<<endl;
 	cout<<Accumlate<4,Square>::val<<endl;
 	cout<<Accumlate<4,Cube>::val<<endl;
+	srand(time(0));
+	MyVector<int,5> v1;
+	init(v1);
+	print(v1);
+
+	MyVector<int,5> v2;
+	init(v2);
+	print(v2);
+	MyVector<int,5> v3;
+	v3=v1+v2;
+	print(v3);
+	double initDouArr[10];
+	initializeExTemp(initDouArr,10);
+	double sumLocal=0.0;
+	for(int index=2;index<=7;index++)
+		sumLocal=sumLocal+initDouArr[index];
+	cout<<calculateSum(initDouArr,2,7,0.0)<<endl;
+	cout<<sumLocal<<endl;
+
+	My<Buddy> me,bud;
+	me.play(bud);
+	templatePartial<20,int,Defaultsorter> initialPartial;
+	templatePartial<20,std::string,Defaultsorter> secondPartial;
+	initialPartial.initT();
+	initialPartial.sort();
+	srand(time(0));
+	secondPartial.initT();
+	secondPartial.sort();
+
 }

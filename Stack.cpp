@@ -20,6 +20,7 @@ template<class T,size_t N> T& MyStack<T,N>::pop()
 		return data[--count];
 	else
 		std::cout<<"Stack underflow error"<<std::endl;
+
 }
 
 
