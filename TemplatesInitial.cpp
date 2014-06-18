@@ -25,11 +25,15 @@
 #include "ExpressionTemplate.hpp"
 #include "ExerciseTemplate.hpp"
 #include "PartialSpecialization.hpp"
+#include "FunctionTemplates.hpp"
+#include "FunctionObject.hpp"
+#include <string>
 
-using  std::strcmp;
+
 using  std::cout;
 using  std::endl;
 using  std::string;
+
 string strTolower(string);
 
 template<typename T> void  displayMessage(T message)
@@ -43,7 +47,7 @@ template<typename T> const T& min(const T& a,const T& b)
 
 template<> const char* const& min<const char* >(const char* const & a,const char* const& b)
 {
-	return (strcmp(a,b)<0)?a:b;
+	return string(a).compare(string(b))>0?a:b;
 }
 
 int main()
@@ -97,7 +101,7 @@ int main()
 	c3.print_everything();
 	//C<string> ccc;
 	Derived<DerivedFromBase,Base> testMe;
-	assert(testMe.Is);
+	//assert(testMe.Is);
 	//Derived<DerivedFromBase,Rest> testYou;
 	//assert(testYou.Is);
 	CountedClass ca;
@@ -145,4 +149,38 @@ int main()
 	secondPartial.initT();
 	secondPartial.sort();
 
+	SmartPtr<Top> pointer1=SmartPtr<Middle>(new Middle);
+	SmartPtr<Top> pointer2=SmartPtr<Bottom>(new Bottom);
+	//SmartPtr<Middle> pointer4=SmartPtr<Top>(new Top);
+	SmartPtr<const Top> pointer3=pointer1;
+
+	std::list<double> doubleList;
+	doubleList.push_back(3.0);
+	doubleList.push_back(5.0);
+	doubleList.push_back(8.0);
+	fDouble(doubleList);
+	Sum<int> sum(20);
+	sum(39);
+	std::cout<<"Understanding overriding operator()::"<<sum.result()<<std::endl;
+	std::list<Club> clubList;
+	clubList.push_back(Club("ASD"));
+	clubList.push_back(Club("ABC"));
+	clubList.push_back(Club("AFG"));
+	std::list<Club>::iterator clubIter=find_if(clubList.begin(),clubList.end(),Club_eq("ABC"));
+	if(clubIter!=clubList.end())
+		std::cout<<(*clubIter).clubName<<endl;
+	for_each(clubList.begin(),clubList.end(),mem_fun_ref(&Club::getName));
+	std::list<double>::iterator listiter=std::find_if(doubleList.begin(),doubleList.end(),m_bind2nd(std::less<double>(),8.0));
+	std::cout<<(*listiter)<<std::endl;
+	std::list<double> doubleListSecond;
+	doubleListSecond.push_back(3.0);
+	doubleListSecond.push_back(5.0);
+	//doubleListSecond.push_back(8.0);
+	doubleListSecond.push_back(10.0);
+	std::pair<std::list<double>::iterator,std::list<double>::iterator> resultPair;
+	resultPair=std::mismatch(doubleList.begin(),doubleList.end(),doubleListSecond.begin(),std::not2(std::less<int>()));
+	std::cout<<"I am thinking...."<<*resultPair.first<<"  "<<*resultPair.second<<std::endl;
+	std::list<Person*> off;
+	for_each(clubList.begin(),clubList.end(),Extract_officers(off));
 }
+

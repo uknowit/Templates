@@ -16,6 +16,7 @@
 #include <sstream>
 using std::cout;
 using std::endl;
+using  std::string;
 
 template<class T> class Defaultsorter
 {
@@ -87,7 +88,7 @@ public:
 		{
 			for(size_t innerIndex=index+1;innerIndex<N;innerIndex++)
 			{
-				if(strcmp(_data[index].c_str(),_data[innerIndex].c_str())>0)
+				if((_data[index].compare(_data[innerIndex]))>0)
 				{
 					 std::string temp=_data[index];
 					_data[index] = _data[innerIndex];
