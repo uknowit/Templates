@@ -18,7 +18,8 @@ void g()
 {
 	cout<<"global g()"<<endl;
 }
-
+/*reference for typeid
+ * http://stackoverflow.com/questions/1986418/typeid-versus-typeof-in-c*/
 template <class T> class YYY {
 public:
 		void g() {cout<<"YYY<"<<typeid(T).name()<<">::g()"<<endl;}
@@ -41,11 +42,11 @@ public:
 	{
 		g();
 		this->h();
-		T t1 = T(),t2=T(1);
-		cout<< t1 <<endl;
+		T t1 = T(10.2),t2=T(1);
+		cout<< t1<<endl;
 		swap(t1,t2);
 		std::swap(t1,t2);
-		cout<<typeid(E).name()<<endl;
+		cout<<"Printing typeid of E::"<<typeid(E).name()<<endl;
 		return E(t2);
 	}
 };
