@@ -37,7 +37,7 @@ void Friendly::g()
 
 void f(const Friendly& fo)
 {
-	cout<<fo.i<<endl;
+	cout<<"Friendly::"<<fo.i<<endl;
 }
 
 #endif /* FRIENDLYCLASS_HPP_ */

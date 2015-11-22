@@ -19,7 +19,7 @@ template<class T> class FriendlyTemplateClass {
 public:
 		FriendlyTemplateClass(const T& theT):t(theT){}
 		friend void ft(const FriendlyTemplateClass<T>& fo) {
-			cout<<fo.t<<endl;
+			cout<<"FriendlyTemplateClass::"<<fo.t<<endl;
 		}
 		//language specifies that template friend must be previously declared
 		void g(){ft(*this);}

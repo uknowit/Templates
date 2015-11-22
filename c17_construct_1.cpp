@@ -61,7 +61,6 @@ void draw(Shape* shape)
 
 int main() 
 {
-
     string s1{"Brahma"};
     s1 = indent(s1);
 
@@ -100,4 +99,11 @@ int main()
         std::cout<<"Beta buffer initialized with NULL"<<std::endl;
 
     std::cout<<alpha.buf<<beta.buf<<std::endl;
+    
+    int *p1 = new int;
+    int *p2 = new int{};
+    int *p3 = new int{7};
+
+    std::cout<<*p1<<"   "<<*p2<<"   "<<*p3<<std::endl;
+
 }
