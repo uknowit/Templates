@@ -96,6 +96,20 @@ struct initializer_list_test {
 
 struct B { B(int val){std::cout<<"Initialized with ... "<<val<<std::endl;}};
 struct BB:B {BB(int val):B{val}{std::cout<<"Initialized BB"<<std::endl;}};
+
+class person {
+    public:
+        person(const std::string& name, const std::string& address):m_name{name}
+        {
+            m_address = address; /* Here m_address is initialized first with empty and assigned with address*/
+        }
+
+    private:
+        std::string m_name;
+        std::string m_address;
+
+
+};
 //struct BBB:BB { BBB(int):B(int){}};
 
 #endif
