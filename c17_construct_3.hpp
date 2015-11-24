@@ -16,4 +16,41 @@ class A {
         int a{9};
         int b{10};
 };
+
+class D 
+{
+    public:
+        D(int val):m_val{val}{}
+        int get_val() {return m_val;}
+
+    private:
+        int m_val;
+};
+
+class HashFunction 
+{
+    public:
+        HashFunction(std::string name){m_name = name;}
+    private:
+        std::string m_name;
+};
+
+int g_func(D d)
+{
+
+}
+
+class Simplified_constr 
+{
+    public:
+        Simplified_constr():a(7),b(5){}//,hash_function{"MD5"},state{"Constructor run"}{}
+        Simplified_constr(int a_val):a{a_val},b{5}{}//,hash_function{"MD5"},state{"Constructor run"}{}
+        Simplified_constr(D d):a{7},b{g_func(d)}{}//,hash_function{"MD5"},state{"Constructor run"}{}
+    private:
+        int a,b;
+        HashFunction hash_function{"MD5"};
+        std::string state{"Constructor run"};
+
+};  
+
 #endif
