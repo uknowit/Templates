@@ -53,4 +53,24 @@ class Simplified_constr
 
 };  
 
+class Image 
+{
+    public:
+        Image(){data = NULL;}
+        ~Image()
+        {
+            if(NULL!=data)
+            {
+                std::cout<<"Calling destrutor for image"<<std::endl;
+                free(data);
+            }
+        }
+        Image(const Image& a);
+        void write_block(void* copy,int buf_len);
+    private:
+        void *data;
+        void *clone();
+        bool shared;
+};
+
 #endif
