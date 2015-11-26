@@ -5,7 +5,10 @@
 #include <string>
 #include <initializer_list>
 #include <tuple>
-class A {
+#include <cstring>
+
+class A 
+{
     public:
         A(){}
         std::tuple<int,int> return_init_tuple() 
@@ -71,6 +74,45 @@ class Image
         void *data;
         void *clone();
         bool shared;
+};
+
+template<class T> class Matrix 
+{
+    public:
+        std::array<int, 2> dim;
+        T* elem ;
+
+        Matrix(T d1, T d2):dim{d1, d2},elem{ new T[d1*d2]}
+        {
+            std::cout<<"Calling Matrix constructor "<<std::endl;
+        }
+        ~Matrix(){delete[] elem;}
+        int size() const {return dim[0]*dim[1];}
+
+        Matrix(const Matrix& rhs)
+        {
+            this->elem = new T[sizeof(rhs.elem)]; 
+            memcpy(this->elem, rhs.elem, sizeof(rhs.elem));
+            std::cout<<"Calling Matrix copy con"<<std::endl;
+        }
+        Matrix& operator=(const Matrix& rhs)
+        {
+            delete[] elem;
+            this->elem = new T[sizeof(rhs.elem)];
+            memcpy(this->elem, rhs.elem, sizeof(rhs.elem));
+            std::cout<<"Calling Matrix Assignment operator"<<std::endl;
+        }
+
+        Matrix(Matrix&& move_obj)
+        {
+            this->dim = move_obj.dim ;
+            this->elem = move_obj.elem;
+            move_obj.dim = {0, 0};
+            move_obj.elem = nullptr;
+            std::cout<<"Calling move constructor..."<<std::endl;
+        }
+        Matrix& operator=(Matrix &&){std::cout<<"Calling assignment operator...."<<std::endl;}
+
 };
 
 #endif

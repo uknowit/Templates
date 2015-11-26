@@ -1,5 +1,5 @@
 #include "c17_construct_3.hpp"
-#include <cstring>
+#include <utility>
 
 int count_1 = 0;
 int count_2 = 0;
@@ -29,6 +29,21 @@ struct S
     std::tuple<int,int> get_members(){ return std::make_tuple(m1,m2);}
 };
 
+Matrix<int> opt_fun()
+{
+    Matrix<int> m4(3,3);
+    return m4;
+}
+
+template<class T> void my_swap(T& a, T& b)
+{
+    T tmp = std::move(a);
+    std::cout << "step 1....."<<std::endl;
+    a = std::move(b);
+    std::cout << "step 2....."<<std::endl;
+    b = std::move(tmp);
+}
+
 int main()
 {
     A a;
@@ -39,9 +54,17 @@ int main()
     ++count_1;
     S s2;
     std::cout<<std::get<0>(s2.get_members())<<" "<<std::get<1>(s2.get_members())<<std::endl;
+    
     Image img ;
     Image img_1 = img;
     void *buf = malloc(sizeof(void*) * 100);
     img_1.write_block(buf,100);
     free(buf);
+    
+    Matrix<int> m1(2,4);
+    Matrix<int> m2 = m1;
+    Matrix<int> m3 = opt_fun();
+    m2 = m3;
+
+    my_swap(m1,m3);
 }
