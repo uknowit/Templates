@@ -65,6 +65,5 @@ int main()
     Matrix<int> m2 = m1;
     Matrix<int> m3 = opt_fun();
     m2 = m3;
-
     my_swap(m1,m3);
 }
