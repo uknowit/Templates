@@ -112,7 +112,13 @@ template<class T> class Matrix
             std::cout<<"Calling move constructor..."<<std::endl;
         }
         Matrix& operator=(Matrix &&){std::cout<<"Calling assignment operator...."<<std::endl;}
-
+        
 };
+
+template<typename T> Matrix<T> operator+(const Matrix<T>& a, const Matrix<T>& b)
+{
+    Matrix<T> res{a.dim[0], a.dim[1]};
+    return res;
+}
 
 #endif
