@@ -118,6 +118,9 @@ template<class T> class Matrix
 template<typename T> Matrix<T> operator+(const Matrix<T>& a, const Matrix<T>& b)
 {
     Matrix<T> res{a.dim[0], a.dim[1]};
+    constexpr auto n = a.size();
+    for (int i = 0; i!=n; ++i)
+        res.elem[i] = a.elem[i]+b.elem[i];
     return res;
 }
 
