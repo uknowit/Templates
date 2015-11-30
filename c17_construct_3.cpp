@@ -44,6 +44,14 @@ template<class T> void my_swap(T& a, T& b)
     b = std::move(tmp);
 }
 
+default_op fun_default_op (default_op arg)
+{
+    default_op def_obj{};
+    default_op def_cp_obj{def_obj};
+    def_cp_obj = arg ;
+    return def_cp_obj;
+}
+
 int main()
 {
     A a;
@@ -66,4 +74,6 @@ int main()
     Matrix<int> m3 = opt_fun();
     m2 = m3;
     my_swap(m1,m3);
+    default_op op_obj;
+    op_obj = fun_default_op(op_obj);
 }

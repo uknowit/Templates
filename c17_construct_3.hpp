@@ -141,4 +141,15 @@ class gslice {
     gslice& operator=(gslice&& rhs) = default;
 };
 
+struct default_op {
+    std::string m_str;
+    int m_int;
+    default_op(){std::cout<<"Default default_op constructor"<<std::endl;}
+    ~default_op(){std::cout<<"Default default_op destructor"<<std::endl;}
+    default_op(const default_op&){std::cout<<"Default default_op copy constructor"<<std::endl;}
+    default_op(default_op&& ){std::cout<<"Default default_op move copy constructor"<<std::endl;}
+    default_op& operator=(const default_op&){std::cout<<"Default default_op assignment operator"<<std::endl;}
+    default_op& operator=(default_op&& ){std::cout<<"Default default_op move assignment operator"<<std::endl;}
+};
+
 #endif
