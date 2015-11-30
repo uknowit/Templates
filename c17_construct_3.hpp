@@ -6,6 +6,9 @@
 #include <initializer_list>
 #include <tuple>
 #include <cstring>
+#include <valarray> 
+
+using std::valarray;
 
 class A 
 {
@@ -123,5 +126,19 @@ template<typename T> Matrix<T> operator+(const Matrix<T>& a, const Matrix<T>& b)
         res.elem[i] = a.elem[i]+b.elem[i];
     return res;
 }
+
+class gslice {
+    valarray<size_t> size;
+    valarray<size_t> stride;
+    valarray<size_t> d1;
+
+    public:
+    gslice() = default;
+    ~gslice() = default;
+    gslice(const gslice& ) = default;
+    gslice& operator=(const gslice&) = default;
+    gslice(gslice&& temp) = default;
+    gslice& operator=(gslice&& rhs) = default;
+};
 
 #endif
