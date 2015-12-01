@@ -76,4 +76,8 @@ int main()
     my_swap(m1,m3);
     default_op op_obj;
     op_obj = fun_default_op(op_obj);
+    
+    Invariant_Z vo;
+    int val[10];
+    Invariant_Z va{{1,2,3},1,&val[2]};
 }

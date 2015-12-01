@@ -152,4 +152,9 @@ struct default_op {
     default_op& operator=(default_op&& ){std::cout<<"Default default_op move assignment operator"<<std::endl;}
 };
 
+struct Invariant_Z {
+    std::vector<int> elem;
+    int my_favourite;
+    int *largest;
+};
 #endif
