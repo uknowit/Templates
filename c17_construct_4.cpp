@@ -27,5 +27,15 @@ int main()
     //Base X2{X1}; Default Copy & move constructor 
     //and assignment operator deleted
     func_template_delete(new shape);
+    /* Local variable that cannot be destoryed...
+    Not_on_stack no_stack;*/
+    Not_on_stack *no_stack_p = new Not_on_stack;
+    no_stack_p->fun_dest();    
+    
+    Not_on_free_store no_free_store;
+    no_free_store.func_new();
+    /* Cannot allocate object on free store when
+     * class memory allocation operator is deleted
+    Not_on_free_store *no_free_store_p = new Not_on_free_store;*/
     return 0;
 }

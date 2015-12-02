@@ -34,4 +34,18 @@ class Base {
     private:
 };
 
+class Not_on_stack 
+{
+    public:
+    void fun_dest(){}
+    ~Not_on_stack() = delete;
+};
+
+class Not_on_free_store
+{
+    public:
+    void func_new(){}
+    void *operator new(size_t) = delete;
+};
+
 #endif
