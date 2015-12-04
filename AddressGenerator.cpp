@@ -12,7 +12,7 @@
 using namespace std;
 string strTolower(string s)
 {
-	transform(s.begin(),s.end(),s.begin(),::tolower);
+	transform(s.begin(), s.end(), s.begin(), ::tolower);
 	return s;
 }
 
