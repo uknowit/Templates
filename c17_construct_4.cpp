@@ -37,5 +37,6 @@ int main()
     /* Cannot allocate object on free store when
      * class memory allocation operator is deleted
     Not_on_free_store *no_free_store_p = new Not_on_free_store;*/
+    
     return 0;
 }
