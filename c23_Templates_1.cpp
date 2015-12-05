@@ -41,5 +41,11 @@ int main()
     String<char> third_char_string;
     third_char_string = second_char_string;
     String<wchar_t> japanese;
+    Container<int>::value_type happy = 23;
+    Container<std::string>::value_type name_alias = "Templates Programming";
+    constexpr int s1 = isqrt(9);
+    constexpr int s2 = isqrt(981);
+
+    std::cout<<s1<<"  "<<s2<<std::endl; 
     return 0;
 }
