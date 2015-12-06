@@ -7,7 +7,7 @@ using std::map;
 using std::list;
 using std::cout;
 using std::endl;
-const int Curious::c1;
+const int Curious::c1 ;
 int main() 
 {
     X x(12);

@@ -118,6 +118,7 @@ class Curious {
         //static int c3 = 5; //static but not constant
         static const int c4 = sqrt(9);
         static constexpr float c5 = 8.0;
+        //constexpr float c6 = 24.5;// constexpr needs to be static
 };
 
 

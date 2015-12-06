@@ -106,6 +106,11 @@ template<typename T> class Container
 template<typename T> struct S_Mem 
 {
     static constexpr Rec r1{};
+    static const int m1 = 7;
+    //static int m2 = 8; Not static constant
+    static int m3;
+    static void f1(){}
+    static void f2();
 };
 
 constexpr int isqrt_helper(int sq, int d, int a)
@@ -118,5 +123,7 @@ constexpr int isqrt(int x)
     return isqrt_helper(1,3,x)/2-1;
 }
 
+template<typename T> int S_Mem<T>::m3 = 99;
+template<typename T> void S_Mem<T>::f2() {/**/}
 //template<typename T> Rec S_Mem<T>::r1 = Rec("Shashi", "Someshwara Nagara");
 #endif
