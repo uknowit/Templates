@@ -20,6 +20,7 @@ public:
 	~MyStack(){}
 	void push(const T& t);
 	T& pop();
+    const T& top_of_stack();
 };
 
 #endif /* STACK_HPP_ */
