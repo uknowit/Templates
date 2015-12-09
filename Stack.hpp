@@ -30,6 +30,7 @@ public:
 	void push(const T& t) throw (StackException);
 	T& pop() throw (StackException);
     const T& top_of_stack() throw (StackException);
+    size_t get_stack_size();
 };
 
 #endif /* STACK_HPP_ */

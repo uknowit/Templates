@@ -45,5 +45,7 @@ template<class T, size_t N> const T& MyStack<T,N>::top_of_stack() throw (StackEx
     }
 }
 
-
-
+template<class T, size_t N> size_t MyStack<T,N>::get_stack_size() 
+{
+    return count;
+}
