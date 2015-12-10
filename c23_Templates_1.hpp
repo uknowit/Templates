@@ -126,4 +126,15 @@ constexpr int isqrt(int x)
 template<typename T> int S_Mem<T>::m3 = 99;
 template<typename T> void S_Mem<T>::f2() {/**/}
 //template<typename T> Rec S_Mem<T>::r1 = Rec("Shashi", "Someshwara Nagara");
+
+template<typename Scalar> class Complex {
+        Scalar re, im;
+    public:
+        Complex():re(0), im(0) {};
+        Scalar real(){return this->re;}
+        Scalar imag(){return this->im;}
+        template<typename T> Complex(T rr, T ii = 0):re(rr), im(ii){}
+        Complex(const Complex&) = default;
+        template<typename T> Complex(const Complex<T>& c):re{c.real()}, im{c.imag()}{}
+};
 #endif

@@ -45,7 +45,11 @@ int main()
     Container<std::string>::value_type name_alias = "Templates Programming";
     constexpr int s1 = isqrt(9);
     constexpr int s2 = isqrt(981);
-
     std::cout<<s1<<"  "<<s2<<std::endl; 
+
+    Complex<float> cf;
+    //Complex<double> cd{cf};
+    //Complex<float> cf2{cd};
+
     return 0;
 }
