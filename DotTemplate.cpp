@@ -48,7 +48,7 @@ int main()
     cout << bs << endl;
     string s = bitSetToString<char>(bs);
     cout<< s <<endl;
-    std::string name = "Shashi";
+    std::string name = "Shashi kumar";
     MemberTemplate<double> mTemp(name);
     Outter<string>::Inner<bool> inner;
     inner.f();
