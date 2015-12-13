@@ -125,7 +125,19 @@ constexpr int isqrt(int x)
 
 template<typename T> int S_Mem<T>::m3 = 99;
 template<typename T> void S_Mem<T>::f2() {/**/}
-//template<typename T> Rec S_Mem<T>::r1 = Rec("Shashi", "Someshwara Nagara");
+
+template<typename T> struct Enum_X {
+    enum E1{a,b};
+    //enum E2;
+    enum class E3;
+    enum E4:char;
+    struct C1{};
+    struct C2;
+
+};
+
+template<typename T> struct Enum_X<T>::C2 {};
+template<typename T> enum class Enum_X<T>::E3 {c,d};
 
 template<typename Scalar> class Complex {
         Scalar re, im;
@@ -136,5 +148,23 @@ template<typename Scalar> class Complex {
         template<typename T> Complex(T rr, T ii = 0):re(rr), im(ii){}
         Complex(const Complex&) = default;
         template<typename T> Complex(const Complex<T>& c):re{c.real()}, im{c.imag()}{}
+};
+
+template<typename T, typename Allocator> class LinkList;
+
+template<typename T> class NodeLink {
+    template<typename U, typename Allocator> friend class LinkList;
+    T val;
+    NodeLink *succ;
+    NodeLink *prev;
+};
+
+template<typename T, typename Allocator> class LinkList {
+    public:
+        class Iterator {
+            NodeLink<T> *current_position;
+        };
+        //Iterator<T, Allocator> begin();
+        //Iterator<T, Allocator> end();
 };
 #endif

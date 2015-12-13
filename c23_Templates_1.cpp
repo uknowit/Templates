@@ -45,8 +45,13 @@ int main()
     Container<std::string>::value_type name_alias = "Templates Programming";
     constexpr int s1 = isqrt(9);
     constexpr int s2 = isqrt(981);
-    std::cout<<s1<<"  "<<s2<<std::endl; 
-
+    std::cout<<s1<<"  "<<s2<<std::endl;  
+    Enum_X<int>::E1 int_enums;   
+    int_enums = Enum_X<int>::b;    
+    Enum_X<int>::E3 int_enums_3 = Enum_X<int>::E3::c;
+    if(int_enums_3 != Enum_X<int>::E3::d)
+        std::cout<<"Enum values "<<int_enums<<std::endl;
+    
     Complex<float> cf;
     //Complex<double> cd{cf};
     //Complex<float> cf2{cd};
