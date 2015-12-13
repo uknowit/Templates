@@ -21,8 +21,7 @@ template<class T> class Handle
             ~Handle(){delete p;}
 };
 
-class Base {
-    
+class Base {    
     public:
     Base(){}
     Base& operator=(const Base& arg) = delete;
@@ -46,6 +45,16 @@ class Not_on_free_store
     public:
     void func_new(){}
     void *operator new(size_t) = delete;
+};
+
+
+class Enum_Test {
+    public:
+    enum X{a,b,c};
+    enum class Y
+    {
+        d,e
+    };
 };
 
 #endif

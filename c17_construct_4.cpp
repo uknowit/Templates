@@ -37,6 +37,9 @@ int main()
     /* Cannot allocate object on free store when
      * class memory allocation operator is deleted
     Not_on_free_store *no_free_store_p = new Not_on_free_store;*/
-    
+    Enum_Test::X test_enum = Enum_Test::b;
+    Enum_Test::Y second_enum = Enum_Test::Y::d;
+    if( second_enum == Enum_Test::Y::d)
+        std::cout<<test_enum<<std::endl;
     return 0;
 }
