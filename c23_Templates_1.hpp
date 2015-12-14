@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <memory>
 /*
  I Trivial default constructor
 
@@ -164,7 +165,35 @@ template<typename T, typename Allocator> class LinkList {
         class Iterator {
             NodeLink<T> *current_position;
         };
-        //Iterator<T, Allocator> begin();
-        //Iterator<T, Allocator> end();
+        Iterator begin();
+        Iterator end();
 };
+
+template<typename T> struct SimpleIterator
+{
+    NodeLink<T> *current_position;
+
+};
+
+template<typename T, typename Allocator> class SimpleLinkList {
+    public:
+        SimpleIterator<T> begin() { SimpleIterator<T> ret; return ret;}
+        SimpleIterator<T> end() { SimpleIterator<T> ret; return ret;}
+};
+
+/*Iterator does not depend on Allocator*/
+LinkList<int, std::allocator<int> > my_link_list;
+LinkList<int, std::allocator<int> >::Iterator my_link_list_iter;
+
+/* Iterator depends on two arguments*/
+template<typename T> void func_iterator(SimpleIterator<T> a, SimpleIterator<T> b)
+{
+}
+
+void user(SimpleLinkList<int, std::allocator<int> > li, SimpleLinkList<int, std::allocator<std::string> > ls)
+{
+    func_iterator(li.begin(), li.end());
+
+}
+
 #endif
