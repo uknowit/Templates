@@ -33,11 +33,30 @@ template<typename T> class Vector
         friend Vector operator* <>(const Matrix<T>&, const Vector&);
 };
 
-
-template<typename T> class Matrix {
+template<typename T> class Matrix 
+{
     Vector<T> v[4];
     public:
     friend Vector<T> operator* <>(const Matrix&, const Vector<T>&);
 };
+
+class C;
+using C2 = C;
+
+template<typename T> class  MyClass 
+{
+    friend C;
+    //friend C2; compiles with warning 
+    //friend C3;
+    friend class C4;
+};
+
+template<typename T> class my_other_class 
+{
+    friend T;
+    friend MyClass<T>;
+    //friend class T; class is redundant
+};
+
 
 #endif
