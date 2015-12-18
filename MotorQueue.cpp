@@ -104,7 +104,7 @@ int main()
         r_input_seq.push(input_seq.pop());
     }
     if(check_motor_queue_can_be_formed(r_input_seq, min_element))
-        std::cout<<"yes"<<std::endl;
+        std::cout<<"yes.."<<std::endl;
     else
-        std::cout<<"no"<<std::endl;
+        std::cout<<"no.."<<std::endl;
 }
