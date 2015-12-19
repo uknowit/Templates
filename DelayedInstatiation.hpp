@@ -18,7 +18,8 @@ public:
 	void g(){}
 };
 
-template<typename T> class Z {
+template<typename T> class Z
+{
 	T t;
 public:
 	void a() {t.f();}
