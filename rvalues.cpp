@@ -33,4 +33,3 @@ int main()
     std::cout<<"Stage2....."<<std::endl;
     a = foo();
 }
-
