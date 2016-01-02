@@ -44,11 +44,19 @@ void fun_namespace_3()
     std:vector<int> v {7, 3, 9, 4, 0, 1};
     sort(v);
     print(v);
+    
+    sort(v, [](int x, int y){return x>y;});
+    print(v);
+
+    sort(v.begin(), v.end());
+    print(v);
+
+    sort(v.begin(), v.end(), [](int x, int y){ return x > y;});
+    print(v);
 }
 
 int main()
 {
-    std::cout<<"23rd December"<<std::endl;
     fun_namespace_3();
     return 0;
 }
