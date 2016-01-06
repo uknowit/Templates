@@ -17,7 +17,7 @@ std::list<tcp::socket> tcp_sockets;
 
 void do_write(tcp::socket &tcp_socket, yield_context yield)
 {
-    std::ifstream myfile ("c23_Templates_1.hpp");
+    std::ifstream myfile ("sample.txt");
     std::string line;
     std::string appen_line;
     if (myfile.is_open())

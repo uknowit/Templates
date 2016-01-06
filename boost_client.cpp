@@ -17,9 +17,11 @@ std::array<char, 4096> bytes;
 void read_handler(const boost::system::error_code &ec,
         std::size_t bytes_transferred)
 {
+    std::cout<<"Read ...."<<bytes_transferred<<" bytes."<<std::endl;
     if (!ec)
     {
         std::cout.write(bytes.data(), bytes_transferred);
+        std::cout<<std::endl;
         tcp_socket.async_read_some(buffer(bytes), read_handler);
     }
 }
