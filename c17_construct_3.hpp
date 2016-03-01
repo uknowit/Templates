@@ -94,7 +94,10 @@ template<class T> class Matrix
 
         Matrix(const Matrix& rhs)
         {
-            this->elem = new T[sizeof(rhs.elem)]; 
+            this->elem = new T[sizeof(rhs.size())];
+            this->dim[0] = rhs.dim[0];
+            this->dim[1] = rhs.dim[1];
+
             memcpy(this->elem, rhs.elem, sizeof(rhs.elem));
             std::cout<<"Calling Matrix copy con"<<std::endl;
         }
@@ -115,16 +118,19 @@ template<class T> class Matrix
             std::cout<<"Calling move constructor..."<<std::endl;
         }
         Matrix& operator=(Matrix &&){std::cout<<"Calling assignment operator...."<<std::endl;}
-        
 };
 
-template<typename T> Matrix<T> operator+(const Matrix<T>& a, const Matrix<T>& b)
+template <typename T> Matrix<T> operator+(const Matrix<T>& first, const Matrix<T>& second)
 {
-    Matrix<T> res{a.dim[0], a.dim[1]};
-    constexpr auto n = a.size();
-    for (int i = 0; i!=n; ++i)
-        res.elem[i] = a.elem[i]+b.elem[i];
-    return res;
+    if(first.dim[0] != second.dim[0] || first.dim[1] != second.dim[1])
+    {
+        throw std::runtime_error("Unequal matrix sizes in +");
+    }
+    Matrix<T> res_mat {first.dim[0] , first.dim[1]};
+    auto n = second.size();
+    for(int index =0; index < n; index++)
+        res_mat.elem[index] = first.elem[index] + second.elem[index];
+    return res_mat ;
 }
 
 class gslice {

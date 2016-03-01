@@ -31,7 +31,7 @@ struct S
 
 Matrix<int> opt_fun()
 {
-    Matrix<int> m4(3,3);
+    Matrix<int> m4(2,4);
     return m4;
 }
 
@@ -76,7 +76,10 @@ int main()
     my_swap(m1,m3);
     default_op op_obj;
     op_obj = fun_default_op(op_obj);
-    
+    std::cout<<m2.size()<<" "<<m3.size()<<std::endl;
+    std::cout<<"======================================"<<std::endl;
+    Matrix<int> m5 = m2+m3;
+    std::cout<<"======================================"<<std::endl;
     Invariant_Z vo;
     int val[10];
     Invariant_Z va{{1,2,3},1,&val[2]};
